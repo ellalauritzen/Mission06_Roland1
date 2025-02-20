@@ -1,29 +1,35 @@
-﻿@using Mission06_Roland.Models
+﻿@using Mission06_Roland1.Models
 @model AddMovie
 
 <h1>Movie Entry Form</h1>
 
 <form id="movieForm" method="post">
+    <input type="hidden" asp-for="MovieId" />
+    <br />
     <div class="form-group">
         <label asp-for="title" class="required">Title</label>
         <input asp-for="title" type="text" id="title" name="title" required>
     </div>
-
-    <div class="form-group">
-        <label asp-for="category" class="required">Category</label>
-        <input asp-for="category" type="text" id="category" name="category" required>
-    </div>
-
+    <br />
+    <select asp-for="CategoryId">
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
+    <br />
+    <br />
     <div class="form-group">
         <label asp-for="year" class="required">Year</label>
         <input asp-for="year" type="number" id="year" name="year" required>
     </div>
-
+    <br />
     <div class="form-group">
         <label asp-for="director" class="required">Director</label>
         <input asp-for="director" type="text" id="director" name="director" required>
     </div>
-
+    <br />
     <div class="form-group">
         <label asp-for="rating" class="required">Rating</label>
         <select asp-for="rating" id="rating" name="rating" required>
@@ -34,7 +40,7 @@
             <option value="R">R</option>
         </select>
     </div>
-
+    <br />
     <div class="form-group">
         <label asp-for="edited">Edited</label>
         <select asp-for="edited" id="edited" name="edited">
@@ -43,16 +49,28 @@
             <option value="false">No</option>
         </select>
     </div>
-
+    <br />
     <div class="form-group">
         <label asp-for="lentTo">Lent To</label>
         <input asp-for="lentTo" type="text" id="lentTo" name="lentTo">
     </div>
-
+    <br />
+    <div class="form-group">
+        <label asp-for="copiedToPlex">Copied to Plex</label>
+        <select asp-for="copiedToPlex" id="copiedToPlex" name="copiedToPlex">
+            <option value="">Select yes/no</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+    <br />
     <div class="form-group">
         <label asp-for="notes">Notes</label>
         <textarea asp-for="notes" id="notes" name="notes" maxlength="25"></textarea>
     </div>
-
+    <br />
     <button type="submit">Submit</button>
+
+    <div asp-validation-summary="All"></div>
+
 </form>

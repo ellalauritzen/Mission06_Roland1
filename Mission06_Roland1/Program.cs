@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Mission06_Roland.Models;
+using Mission06_Roland1.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,0 +1,43 @@
+﻿@using Mission06_Roland1.Models
+@model List<AddMovie>
+
+<table class="table table-bordered">
+    <thead class="fm-bold">
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Lent To</th>
+            <th>Copied to Plex</th>
+            <th>Notes</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.title</td>
+                <td>@movie.Category.CategoryName</td>
+                <td>@movie.year</td>
+                <td>@movie.director</td>
+                <td>@movie.rating</td>
+                <td>@movie.edited</td>
+                <td>@movie.lentTo</td>
+                <td>@movie.copiedToPlex</td>
+                <td>@movie.notes</td>
+
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@movie.MovieId">Edit</a></td> 
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@movie.MovieId">Delete</a></td> 
+                @* <form asp-controller="Home" asp-action="Delete" method="post"> *@
+                @*     <input type="hidden" name="id" value="@movie.MovieId" /> *@
+                @*     <button type="submit" class="btn btn-danger">Delete</button> *@
+                @* </form> *@
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Mission06_Roland1.Models;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Mission06_Roland.Models
+namespace Mission06_Roland1.Models
 {
     public class NewMovieContext : DbContext
     {
@@ -10,5 +11,8 @@ namespace Mission06_Roland.Models
         {
         }
         public DbSet<AddMovie> Movies { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
     }
 }
